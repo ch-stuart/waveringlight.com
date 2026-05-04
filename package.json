@@ -1,0 +1,19 @@
+{
+  "name": "waveringlight-com",
+  "private": true,
+  "scripts": {
+    "build": "bun run astro build",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "lint": "oxlint",
+    "format": "oxfmt"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "astro": "^6.1.9",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0"
+  }
+}
