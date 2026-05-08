@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(bun run *)"
+      "Bash(bun run *)",
+      "Bash(pnpm lighthouse *)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(cat *)",
+      "Bash(du *)",
+      "Bash(wc *)",
+      "Bash(cd *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git show *)",
+      "Bash(git status *)",
+      "Bash(git branch *)"
     ]
   }
 }

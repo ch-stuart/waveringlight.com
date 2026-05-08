@@ -1,0 +1,214 @@
+---
+import { Picture, getImage } from "astro:assets";
+import iconSrc from "../../../images/nod/app-icon/original.png";
+import GridPlayer from "../../../components/nod/GridPlayer.astro";
+
+const iconAvif = await getImage({ src: iconSrc, format: "avif", width: 32, height: 32 });
+const iconWebp = await getImage({ src: iconSrc, format: "webp", width: 32, height: 32 });
+const iconPng = await getImage({ src: iconSrc, format: "png", width: 32, height: 32 });
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nod — sleep noise, nothing else. A minimal noise app for iPhone."
+    />
+    <title>Nod — Sleep Noise app for iOS</title>
+    <link rel="icon" type="image/avif" href={iconAvif.src} />
+    <link rel="icon" type="image/webp" href={iconWebp.src} />
+    <link rel="icon" type="image/png" href={iconPng.src} />
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="f63cf65f-da2f-48b4-a62d-eaf1ba0faa46"></script>
+    <style is:global>
+      /* base.css */
+      :root {
+        --color-bg: #0a0a0a;
+        --color-text: #f0eeeb;
+        --color-muted: #888;
+        --color-focus: #f0eeeb;
+        --width-content: 640px;
+        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+          sans-serif;
+        --space-xs: 0.5rem;
+        --space-sm: 1rem;
+        --space-md: 2rem;
+        --space-lg: 4rem;
+        --space-xl: 6rem;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-color: var(--color-bg);
+        background-image: linear-gradient(
+          to bottom,
+          color-mix(in srgb, #8cabc2 20%, var(--color-bg)),
+          color-mix(in srgb, #ab85ad 19%, var(--color-bg)),
+          color-mix(in srgb, #c57564 16%, var(--color-bg)),
+          color-mix(in srgb, #4d362e 22%, var(--color-bg))
+        );
+        background-attachment: fixed;
+        color: var(--color-text);
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-md) var(--space-sm);
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      .skipLink {
+        position: absolute;
+        top: -100%;
+        left: var(--space-sm);
+        background: var(--color-text);
+        color: var(--color-bg);
+        padding: var(--space-xs) var(--space-sm);
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        text-decoration: none;
+        z-index: 100;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .skipLink:focus {
+        top: 0;
+      }
+
+      @media (max-width: 480px) {
+        :root {
+          --space-lg: 3rem;
+          --space-xl: 4rem;
+        }
+      }
+
+      /* header.css */
+      .siteHeader {
+        width: 100%;
+        max-width: var(--width-content);
+        margin-block-end: var(--space-xl);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+
+      .appIcon {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: block;
+      }
+
+      .wordmark {
+        font-size: 1.125rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--color-text);
+      }
+
+      /* hero.css */
+      .siteMain {
+        width: 100%;
+        max-width: var(--width-content);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-lg);
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+      }
+
+      .heading {
+        font-size: clamp(2rem, 8vw, 3rem);
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--color-text);
+      }
+
+      .heroSub {
+        font-size: 1.125rem;
+        color: var(--color-muted);
+        font-weight: 400;
+      }
+
+      /* footer.css */
+      .siteFooter {
+        width: 100%;
+        max-width: var(--width-content);
+        margin-block-start: var(--space-xl);
+      }
+
+      .footerText {
+        font-size: 0.8125rem;
+        color: var(--color-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skipLink" href="#main">Skip to content</a>
+
+    <header class="siteHeader">
+      <div class="brand">
+        <Picture
+          src={iconSrc}
+          formats={["avif", "webp"]}
+          alt=""
+          width={32}
+          height={32}
+          class="appIcon"
+        />
+        <span class="wordmark">Nod</span>
+      </div>
+    </header>
+
+    <main id="main" class="siteMain">
+      <section class="hero">
+        <h1 class="heading">Sleep noise, nothing else.</h1>
+        <p class="heroSub">
+          Nod gives you a continuous range of noise, from bright and airy to warm and dark. Find
+          the sound that helps you sleep, then let it run all night.
+        </p>
+      </section>
+
+      <GridPlayer />
+    </main>
+
+    <footer class="siteFooter">
+      <p class="footerText">&copy; 2026 Charles Stuart</p>
+    </footer>
+  </body>
+</html>

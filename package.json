@@ -6,13 +6,16 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "lint": "oxlint",
-    "format": "oxfmt"
+    "format": "oxfmt",
+    "lighthouse:nod": "node scripts/lighthouse-nod.mjs"
   },
   "dependencies": {
     "sharp": "^0.33.5"
   },
   "devDependencies": {
     "astro": "^6.1.9",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.0.0",
     "oxfmt": "^0.46.0",
     "oxlint": "^1.61.0"
   }

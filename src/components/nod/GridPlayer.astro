@@ -1,0 +1,261 @@
+<!-- srcObject is set to the WebAudio MediaStream at play time; routing output
+     through an <audio> element promotes the iOS session to "playback" category,
+     bypassing the ringer/mute switch. -->
+<audio id="audio-output" aria-hidden="true"></audio>
+
+<section id="player-section" class="screenshot" aria-label="Interactive noise player">
+  <div id="device-frame" class="deviceFrame">
+    <div
+      id="grid-player"
+      class="gridPlayer"
+      role="button"
+      aria-pressed="false"
+      aria-label="Nod noise player — tap to play, drag to explore"
+      tabindex="0"
+    >
+      <div id="device-notch" class="deviceNotch" aria-hidden="true"></div>
+      <div id="grid-dot" class="gridDot"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <button
+    class="appStoreLink"
+    onclick="document.getElementById('coming-soon-dialog').showModal(); window.umami?.track('cta-tap')"
+  >
+    <img
+      class="appStoreBadge"
+      src="/nod/download-on-app-store/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+      alt="Download on the App Store"
+      width="165"
+      height="55"
+    />
+  </button>
+</section>
+
+<dialog id="coming-soon-dialog" class="dialog" aria-labelledby="dialog-title">
+  <p id="dialog-title" class="dialogMessage">Coming soon to the App Store :)</p>
+  <form method="dialog" class="dialogForm">
+    <button class="dialogClose" autofocus>Got it</button>
+  </form>
+</dialog>
+
+<style>
+  /* player.css */
+  .screenshot {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  /* Black Titanium — darkest iPhone finish */
+  .deviceFrame {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    background: linear-gradient(150deg, #2e2e2e 0%, #1a1a1a 45%, #111 100%);
+    border-radius: 36px;
+    padding: 5px;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.6),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 22px 56px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Left side: volume up + volume down buttons */
+  .deviceFrame::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 22%;
+    width: 3px;
+    height: 44px;
+    background: linear-gradient(to bottom, #2a2a2a, #1c1c1c 40%, #2a2a2a);
+    border-radius: 2px 0 0 2px;
+    box-shadow: 0 60px 0 #242424;
+  }
+
+  /* Right side: power button */
+  .deviceFrame::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 22%;
+    width: 3px;
+    height: 53px;
+    background: linear-gradient(to bottom, #2a2a2a, #1c1c1c 40%, #2a2a2a);
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* Vertical noise-color gradient + horizontal brightness overlay, blended together */
+  .gridPlayer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 720 / 1457;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    touch-action: none;
+    user-select: none;
+    isolation: isolate;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.52), rgba(0, 0, 0, 0.6)),
+      linear-gradient(
+        to bottom,
+        rgb(224, 230, 235) 0%,
+        rgb(140, 171, 194) 27%,
+        rgb(171, 133, 173) 56%,
+        rgb(196, 117, 99) 82%,
+        rgb(77, 54, 46) 100%
+      );
+    background-blend-mode: multiply;
+  }
+
+  .gridPlayer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/nod/white256.png") repeat;
+    background-size: 200px;
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .deviceNotch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 33%;
+    height: 24px;
+    background: #0d0d0d;
+    border-radius: 50px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .gridDot {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.15s ease;
+    cursor: move;
+    z-index: 1;
+  }
+
+  .gridDot.playing {
+    background: rgba(250, 250, 250, 0.9);
+  }
+
+  @media (max-width: 480px) {
+    .deviceFrame {
+      max-width: 240px;
+    }
+  }
+
+  /* cta.css */
+  .cta {
+    padding-block-end: var(--space-md);
+  }
+
+  .appStoreLink {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .appStoreBadge {
+    display: block;
+    height: 40px;
+    width: auto;
+  }
+
+  /* dialog.css */
+  .dialog {
+    background: color-mix(in srgb, var(--color-bg) 90%, var(--color-text));
+    color: var(--color-text);
+    border: 1px solid color-mix(in srgb, var(--color-text) 20%, transparent);
+    border-radius: 12px;
+    padding: var(--space-md);
+    max-width: 320px;
+    width: calc(100% - var(--space-md));
+    font-family: var(--font-sans);
+    position: fixed;
+    inset: 0;
+    margin: auto;
+  }
+
+  .dialog::backdrop {
+    background: color-mix(in srgb, var(--color-bg) 75%, transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .dialogMessage {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-block-end: var(--space-md);
+  }
+
+  .dialogForm {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .dialogClose {
+    background: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border: 1px solid color-mix(in srgb, var(--color-text) 30%, transparent);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: border-color 0.15s ease;
+  }
+
+  .dialogClose:hover {
+    border-color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  }
+</style>
+
+<script>
+  const container = document.getElementById("grid-player") as HTMLElement;
+  const dot = document.getElementById("grid-dot") as HTMLElement;
+
+  requestAnimationFrame(() => {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    const minX = 5;
+    const maxX = width - 45;
+    const minY = 44;
+    const maxY = height - 55;
+    dot.style.transform = `translate(${minX + 0.75 * (maxX - minX)}px, ${minY + 0.75 * (maxY - minY)}px)`;
+    dot.style.display = "block";
+  });
+
+  // Load audio engine on first interaction.
+  // AudioContext must be created and resumed synchronously within the user
+  // gesture — iOS Safari blocks audio if creation happens after an await.
+  container.addEventListener("pointerdown", function handleFirst(event) {
+    container.removeEventListener("pointerdown", handleFirst);
+    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    const audioContext: AudioContext = new AudioCtx();
+
+    audioContext.resume();
+
+    import("../../scripts/nod/grid-player").then(({ mount }) =>
+      mount(dot, container, event, audioContext, "playing"),
+    );
+  });
+</script>
