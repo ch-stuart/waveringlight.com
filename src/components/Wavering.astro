@@ -1,0 +1,53 @@
+<div id="starfield"></div>
+
+<style>
+  #starfield {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  #starfield :global(.star) {
+    position: absolute;
+    color: rgba(0 0 0 / 0.2);
+    font-family: georgia, serif;
+    font-size: 10px;
+    line-height: 1;
+    opacity: 0;
+    animation: twinkle 3s ease-in-out forwards;
+  }
+
+  @keyframes twinkle {
+    0% {
+      opacity: 0;
+    }
+    33% {
+      opacity: 1;
+    }
+    67% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const container = document.getElementById("starfield");
+  const chars = ["*", "+", "."];
+
+  function spawnStar() {
+    const span = document.createElement("span");
+    span.className = "star";
+    span.textContent = chars[Math.floor(Math.random() * chars.length)];
+    span.style.left = `${Math.random() * 95}%`;
+    span.style.top = `${Math.random() * 95}%`;
+    container!.appendChild(span);
+    span.addEventListener("animationend", () => span.remove(), { once: true });
+  }
+
+  spawnStar();
+  setInterval(spawnStar, 200);
+</script>
