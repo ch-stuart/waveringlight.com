@@ -10,15 +10,18 @@ import Wavering from "../components/Wavering.astro";
   <h2 class="h2">Apps</h2>
   <ul class="list appList">
     <li class="item app">
-      <a href="/apps/nod-sleep-noise-app" class="btn">nod sleep noise app</a>
+      <a href="/apps/nod-sleep-noise-app" class="btn btn1"
+        >nod sleep noise app</a
+      >
       <div class="desc">
         <h3 class="h3">nod</h3>
         <p class="appDesc">Minimal sleep noise app.</p>
       </div>
     </li>
     <li class="item app" style="display: none;">
-      <a href="/apps/womens-lacrosse-timekeeping-and-scoring-app" class="btn"
-        >lax app</a
+      <a
+        href="/apps/womens-lacrosse-timekeeping-and-scoring-app"
+        class="btn btn2">lax app</a
       >
       <div class="desc">
         <h3 class="h3">Women's Lax App</h3>
@@ -31,11 +34,11 @@ import Wavering from "../components/Wavering.astro";
   <h2 class="h2">Support</h2>
   <ul class="list supportList">
     <li class="item support">
-      <a href="/contact" class="btn">contact us</a>
+      <a href="/contact" class="btn btn3">contact us</a>
       <div class="desc"><p class="appDesc">contact us</p></div>
     </li>
     <li class="item support">
-      <a href="/privacy-policy" class="btn">privacy policy</a>
+      <a href="/privacy-policy" class="btn btn4">privacy policy</a>
       <div class="desc"><p class="appDesc">privacy policy</p></div>
     </li>
   </ul>
@@ -111,8 +114,37 @@ import Wavering from "../components/Wavering.astro";
     z-index: 2;
     transition: background-color 200ms ease-in;
   }
-  .btn:hover {
+  .btn1 {
     background-color: #fffd6c;
+  }
+  .btn2 {
+    background-color: #6cffd3;
+  }
+  .btn3 {
+    background-color: #ae6cff;
+  }
+  .btn4 {
+    background-color: #ff6c87;
+  }
+  @media screen and (min-width: 768px) {
+    .btn1,
+    .btn2,
+    .btn3,
+    .btn4 {
+      background-color: #fff;
+    }
+    .btn1:hover {
+      background-color: #fffd6c;
+    }
+    .btn2:hover {
+      background-color: #6cffd3;
+    }
+    .btn3:hover {
+      background-color: #ae6cff;
+    }
+    .btn4:hover {
+      background-color: #ff6c87;
+    }
   }
   .desc {
     position: absolute;
