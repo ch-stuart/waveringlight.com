@@ -1,0 +1,115 @@
+---
+interface Props {
+  redirectUrl?: string;
+}
+
+const { redirectUrl = "https://www.waveringlight.com/contact?success=true" } =
+  Astro.props;
+
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+---
+
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input
+    type="hidden"
+    name="subject"
+    value="Contact form — waveringlight.com"
+  />
+  <input type="hidden" name="from_name" value="Wavering Light Contact" />
+  <input type="hidden" name="redirect" value={redirectUrl} />
+  <input
+    type="checkbox"
+    name="botcheck"
+    style="display:none"
+    tabindex="-1"
+    autocomplete="off"
+  />
+
+  <div class="field">
+    <label for="cf-name">Name</label>
+    <input type="text" id="cf-name" name="name" required autocomplete="name" />
+  </div>
+
+  <div class="field">
+    <label for="cf-email">Email</label>
+    <input
+      type="email"
+      id="cf-email"
+      name="email"
+      required
+      autocomplete="email"
+    />
+  </div>
+
+  <div class="field">
+    <label for="cf-message">Message</label>
+    <textarea id="cf-message" name="message" rows="6" required></textarea>
+  </div>
+
+  <button type="submit">Send message</button>
+</form>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    background: white;
+    color: inherit;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid black;
+    outline-offset: 3px;
+    border-color: transparent;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    align-self: flex-start;
+    padding: 0.5rem 1.25rem;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  button:focus {
+    outline: 2px solid black;
+    outline-offset: 3px;
+  }
+
+  button:hover {
+    background: #333;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="31fd1927-b0ad-4bc5-8de8-a5d326e02548"></script>
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="content">
+      <slot />
+    </div>
+    <p class="copy">&copy; Wavering Light LLC 2026</p>
+  </body>
+</html>
+
+<style>
+  .content {
+    max-width: 34rem;
+    padding: 3rem;
+    border: 2px solid rgba(39, 39, 39, 0.92);
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 13px 13px 0 0 rgba(0 0 0 / 0.04);
+    position: relative;
+  }
+  .copy {
+    max-width: 32rem;
+    margin: 1.5rem auto 0;
+    font-size: 11px;
+    color: #555;
+    padding-left: 52px;
+    font-family: var(--font-oldstyle-serif);
+  }
+</style>

@@ -3,3 +3,5 @@ node_modules/
 src/images/
 .astro/
 lighthouse-reports/
+.env
+.env.local

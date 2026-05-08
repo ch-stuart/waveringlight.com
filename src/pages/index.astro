@@ -1,58 +1,121 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Wavering Light</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <meta name="description" content="Software Development & iOS apps." />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="31fd1927-b0ad-4bc5-8de8-a5d326e02548"></script>
-    <!-- LTeX: enabled=false -->
-    <style is:global>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background-color: white;
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Oxygen,
-          Ubuntu,
-          Cantarell,
-          "Open Sans",
-          "Helvetica Neue",
-          sans-serif;
-        padding: 3rem;
-      }
-    </style>
-    <!-- LTeX: enabled=true -->
-  </head>
-  <body>
-    <h1>*~*~* Wavering Light LLC *~*~*</h1>
-    <p>Software Development & iOS apps</p>
-    <h2>Apps</h2>
-    <ul>
-      <li>
-        <a href="/apps/nod-sleep-noise-app">nod sleep noise app</a>
-      </li>
-    </ul>
-    <p>contact/support → contact@waveringlight.com</p>
-  </body>
-</html>
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Wavering Light" description="Software Development & iOS apps.">
+  <h1 class="h1">Wavering Light LLC</h1>
+  <p class="subhead">Software Development & iOS apps</p>
+  <h2 class="h2">Apps</h2>
+  <ul class="list appList">
+    <li class="item app">
+      <a href="/apps/nod-sleep-noise-app" class="btn">nod sleep noise app</a>
+      <div class="desc">
+        <h3 class="h3">nod</h3>
+        <p class="appDesc">Minimal sleep noise app.</p>
+      </div>
+    </li>
+    <li class="item app" style="display: none;">
+      <a href="/apps/womens-lacrosse-timekeeping-and-scoring-app" class="btn"
+        >lax app</a
+      >
+      <div class="desc">
+        <h3 class="h3">Women's Lax App</h3>
+        <p class="appDesc">
+          Track time, score, and stats for women's lacrosse.
+        </p>
+      </div>
+    </li>
+  </ul>
+  <h2 class="h2">Support</h2>
+  <ul class="list supportList">
+    <li class="item support">
+      <a href="/contact" class="btn">contact us</a>
+      <div class="desc"><p class="appDesc">contact us</p></div>
+    </li>
+    <li class="item support">
+      <a href="/privacy-policy" class="btn">privacy policy</a>
+      <div class="desc"><p class="appDesc">privacy policy</p></div>
+    </li>
+  </ul>
+</Layout>
+
+<style>
+  .h1 {
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-weight: normal;
+    font-size: 22px;
+    display: inline-block;
+    background-color: rgb(33, 192, 240);
+    color: #222;
+    padding: 1rem;
+    margin: 0;
+    border-radius: 3px;
+    box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.07);
+    border: 2px solid rgb(9, 45, 56);
+  }
+  .subhead {
+    margin-top: 0.7rem;
+    font-style: italic;
+    font-size: 15px;
+    font-family: var(--font-oldstyle-serif);
+  }
+  .h2 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 2rem 0 0 0;
+  }
+  .h3 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+  }
+  .appDesc {
+    font-size: 14px;
+    margin-top: 0;
+  }
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1rem 0 0 0;
+    padding: 0;
+    gap: 1rem;
+    list-style: none;
+  }
+  .item {
+    border: 2px solid #222;
+    position: relative;
+    box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.07);
+    transition: box-shadow 200ms ease-in;
+  }
+  .item:hover {
+    box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.1);
+  }
+  .app {
+    width: 12rem;
+    height: 12rem;
+  }
+  .support {
+    width: 8rem;
+    height: 8rem;
+  }
+  .btn {
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    font-size: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 2;
+    transition: background-color 200ms ease-in;
+  }
+  .btn:hover {
+    background-color: #fffd6c;
+  }
+  .desc {
+    position: absolute;
+    inset: 1rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+</style>

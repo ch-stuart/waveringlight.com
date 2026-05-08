@@ -1,0 +1,18 @@
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  --font-geometric-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+  --font-oldstyle-serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+}
+
+body {
+  padding: 2rem;
+  background-color: rgb(248, 243, 243);
+  font-family: var(--font-geometric-sans);
+}
+a, a:visited {
+  color: blue;
+  text-decoration: none;
+}

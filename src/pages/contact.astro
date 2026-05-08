@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import HomeLink from "../components/HomeLink.astro";
+---
+
+<Layout
+  title="Contact Us — Wavering Light LLC"
+  description="Get in touch with Wavering Light LLC."
+>
+  <HomeLink />
+  <h1 class="h1">Contact Us</h1>
+
+  <div id="success-banner" style="display:none; margin-bottom: 1.5rem;">
+    <p>Message sent — thanks, we'll be in touch.</p>
+  </div>
+
+  <ContactForm />
+
+  <script>
+    if (new URLSearchParams(location.search).get("success") === "true") {
+      const banner = document.getElementById("success-banner");
+      if (banner) banner.style.display = "block";
+    }
+  </script>
+</Layout>
+
+<style>
+  h1,
+  h2,
+  p {
+    color: #222;
+  }
+  h1 {
+    margin: 0 0 1rem;
+    font-size: 1.8rem;
+  }
+  h2 {
+    margin: 1rem 0 0;
+    font-size: 1.5rem;
+  }
+  p {
+    line-height: 1.6;
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+  }
+</style>
