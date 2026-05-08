@@ -9,9 +9,6 @@
     "format": "oxfmt",
     "lighthouse:nod": "node scripts/lighthouse-nod.mjs"
   },
-  "dependencies": {
-    "sharp": "^0.33.5"
-  },
   "devDependencies": {
     "astro": "^6.1.9",
     "chrome-launcher": "^1.1.2",
