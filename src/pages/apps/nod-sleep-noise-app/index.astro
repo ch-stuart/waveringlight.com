@@ -3,9 +3,24 @@ import { Picture, getImage } from "astro:assets";
 import iconSrc from "../../../images/nod/app-icon/original.png";
 import GridPlayer from "../../../components/nod/GridPlayer.astro";
 
-const iconAvif = await getImage({ src: iconSrc, format: "avif", width: 32, height: 32 });
-const iconWebp = await getImage({ src: iconSrc, format: "webp", width: 32, height: 32 });
-const iconPng = await getImage({ src: iconSrc, format: "png", width: 32, height: 32 });
+const iconAvif = await getImage({
+  src: iconSrc,
+  format: "avif",
+  width: 32,
+  height: 32,
+});
+const iconWebp = await getImage({
+  src: iconSrc,
+  format: "webp",
+  width: 32,
+  height: 32,
+});
+const iconPng = await getImage({
+  src: iconSrc,
+  format: "png",
+  width: 32,
+  height: 32,
+});
 ---
 
 <!doctype html>
@@ -34,7 +49,8 @@ const iconPng = await getImage({ src: iconSrc, format: "png", width: 32, height:
         --color-muted: #888;
         --color-focus: #f0eeeb;
         --width-content: 640px;
-        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+        --font-sans:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
           sans-serif;
         --space-xs: 0.5rem;
         --space-sm: 1rem;
@@ -199,8 +215,9 @@ const iconPng = await getImage({ src: iconSrc, format: "png", width: 32, height:
       <section class="hero">
         <h1 class="heading">Sleep noise, nothing else.</h1>
         <p class="heroSub">
-          Nod gives you a continuous range of noise, from bright and airy to warm and dark. Find
-          the sound that helps you sleep, then let it run all night.
+          Nod gives you a continuous range of noise, from bright and airy to
+          warm and dark. Find the sound that helps you sleep, then let it run
+          all night.
         </p>
       </section>
 
@@ -208,7 +225,7 @@ const iconPng = await getImage({ src: iconSrc, format: "png", width: 32, height:
     </main>
 
     <footer class="siteFooter">
-      <p class="footerText">&copy; 2026 Charles Stuart</p>
+      <p class="footerText">&copy; 2026 Wavering Light LLC</p>
     </footer>
   </body>
 </html>
