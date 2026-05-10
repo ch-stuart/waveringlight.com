@@ -9,7 +9,7 @@ const { redirectUrl = "https://www.waveringlight.com/contact?success=true" } =
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 ---
 
-<form action="https://api.web3forms.com/submit" method="POST">
+<form action="https://api.web3forms.com/submit" method="POST" class="form">
   <input type="hidden" name="access_key" value={accessKey} />
   <input
     type="hidden"
@@ -51,7 +51,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 </form>
 
 <style>
-  form {
+  .form {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;

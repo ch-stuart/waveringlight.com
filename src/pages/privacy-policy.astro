@@ -1,5 +1,5 @@
 ---
-import HomeLink from "../components/HomeLink.astro";
+import Header from "../components/Header.astro";
 import Wavering from "../components/Wavering.astro";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -9,18 +9,18 @@ import Layout from "../layouts/Layout.astro";
   description="Privacy Policy for Wavering Light LLC."
 >
   <Wavering />
-  <HomeLink />
-  <h1>Privacy Policy</h1>
+  <Header />
+  <h2>Privacy Policy</h2>
   <p>Wavering Light LLC — Effective May 1, 2026</p>
 
-  <h2>Information We Collect</h2>
+  <h3>Information We Collect</h3>
   <p>
     We do not collect, store, or process any personally identifiable information
     (PII). Our apps do not require an account, do not transmit usage data to our
     servers, and do not include any advertising or third-party tracking SDKs.
   </p>
 
-  <h2>Apple App Store</h2>
+  <h3>Apple App Store</h3>
   <p>
     Our apps are distributed through the Apple App Store. Apple may collect
     certain data as part of that distribution (such as crash reports and
@@ -28,32 +28,32 @@ import Layout from "../layouts/Layout.astro";
     <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.
   </p>
 
-  <h2>This Website</h2>
+  <h3>This Website</h3>
   <p>
     This website uses <a href="https://umami.is">Umami</a> for privacy-friendly analytics.
     Umami does not use cookies and does not collect PII. It records only anonymous
     page-view counts.
   </p>
 
-  <h2>Contact</h2>
+  <h3>Contact</h3>
   <p>
     Questions? <a href="/contact">Contact us</a>.
   </p>
 </Layout>
 
 <style>
-  h1,
   h2,
+  h4,
   p {
     color: #222;
   }
-  h1 {
-    margin: 0;
-    font-size: 1.8rem;
-  }
   h2 {
+    margin: 3rem 0 0;
+    font-size: 1.2rem;
+  }
+  h3 {
     margin: 1rem 0 0;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   p {
     line-height: 1.6;

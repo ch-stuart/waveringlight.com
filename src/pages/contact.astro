@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
-import HomeLink from "../components/HomeLink.astro";
 import Wavering from "../components/Wavering.astro";
+import Header from "../components/Header.astro";
 ---
 
 <Layout
@@ -10,14 +10,14 @@ import Wavering from "../components/Wavering.astro";
   description="Get in touch with Wavering Light LLC."
 >
   <Wavering />
-  <HomeLink />
-  <h1 class="h1">Contact Us</h1>
+  <Header />
+  <h2 class="h2">Contact Us</h2>
   <ContactForm />
 </Layout>
 
 <style>
-  h1 {
-    margin: 0 0 1rem;
-    font-size: 1.8rem;
+  .h2 {
+    margin: 3rem 0 0;
+    font-size: 1.2rem;
   }
 </style>
