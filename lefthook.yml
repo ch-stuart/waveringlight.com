@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: false
+  commands:
+    build:
+      run: bun run build
+    gitAdd:
+      run: git add docs/

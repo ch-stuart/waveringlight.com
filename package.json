@@ -1,5 +1,12 @@
 {
   "name": "waveringlight-com",
+  "devDependencies": {
+    "astro": "^6.1.9",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.0.0",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0"
+  },
   "private": true,
   "scripts": {
     "build": "bun run astro build",
@@ -9,11 +16,7 @@
     "format": "oxfmt",
     "lighthouse:nod": "node scripts/lighthouse-nod.mjs"
   },
-  "devDependencies": {
-    "astro": "^6.1.9",
-    "chrome-launcher": "^1.1.2",
-    "lighthouse": "^12.0.0",
-    "oxfmt": "^0.46.0",
-    "oxlint": "^1.61.0"
+  "dependencies": {
+    "lefthook": "^2.1.6"
   }
 }
