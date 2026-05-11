@@ -86,7 +86,7 @@ import Layout from "../layouts/Layout.astro";
     list-style: none;
   }
   .layout-item {
-    border: 2px solid #222;
+    border: var(--border-default);
     position: relative;
     box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.07);
     transition: box-shadow 200ms ease-in;
@@ -114,6 +114,7 @@ import Layout from "../layouts/Layout.astro";
   }
   .btn {
     transition: background-color 200ms ease-in;
+    text-decoration: none;
   }
   .btn1 {
     background-color: #fcfa95;

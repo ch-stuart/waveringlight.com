@@ -6,6 +6,7 @@
   --font-geometric-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
   --font-oldstyle-serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
   --font-color-primary: #2d2c2b;
+  --border-default: 2px solid rgba(39, 39, 39, 0.92);
 }
 
 body {
@@ -22,5 +23,8 @@ body {
 
 a, a:visited {
   color: blue;
-  text-decoration: none;
+  text-decoration: underline;
+}
+a:visited {
+  color: purple; 
 }
