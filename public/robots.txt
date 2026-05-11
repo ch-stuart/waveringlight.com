@@ -16,3 +16,27 @@ Allow: /
 
 User-agent: Baiduspider
 Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+# SEO/analytics
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+# Social media
+User-agent: LinkedInBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
