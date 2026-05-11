@@ -17,6 +17,7 @@
     "lighthouse:nod": "node scripts/lighthouse-nod.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "lefthook": "^2.1.6"
   }
 }

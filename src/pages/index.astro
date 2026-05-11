@@ -3,64 +3,80 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Wavering Light" description="Software Development & iOS apps.">
-  <h2 class="h2">Apps</h2>
-  <ul class="list appList">
-    <li class="item app">
-      <a href="/apps/nod-sleep-noise-app" class="btn btn1" data-astro-prefetch
-        >nod sleep noise app</a
+  <h2 class="type-h2">Apps</h2>
+  <ul class="layout-list">
+    <li class="layout-item layout-item--app">
+      <a
+        href="/apps/nod-sleep-noise-app"
+        class="u-screenreaderLink btn btn1 u-cover"
+        data-astro-prefetch>nod sleep noise app</a
       >
-      <div class="desc">
-        <h3 class="h3">nod</h3>
-        <p class="appDesc">Minimal sleep noise app.</p>
+      <div class="layout-itemContent u-cover u-passThrough">
+        <h3 class="type-itemHeading">nod</h3>
+        <p class="type-itemDescription">Minimal sleep noise app.</p>
       </div>
     </li>
-    <li class="item app" style="display: none;">
+    <li class="layout-item layout-item--app" style="display: none;">
       <a
         href="/apps/womens-lacrosse-timekeeping-and-scoring-app"
-        class="btn btn2">lax app</a
+        class="u-screenreaderLink u-cover">lax app</a
       >
-      <div class="desc">
-        <h3 class="h3">Women's Lax App</h3>
-        <p class="appDesc">
+      <div class="layout-itemContent u-cover u-passThrough">
+        <h3 class="type-itemHeading">Women's Lax App</h3>
+        <p class="type-itemDescription">
           Track time, score, and stats for women's lacrosse.
         </p>
       </div>
     </li>
   </ul>
-  <h2 class="h2">Support</h2>
-  <ul class="list supportList">
-    <li class="item support">
-      <a href="/contact" class="btn btn3" data-astro-prefetch>contact us</a>
-      <div class="desc"><p class="appDesc">contact us</p></div>
+  <h2 class="type-h2">Support</h2>
+  <ul class="layout-list">
+    <li class="layout-item layout-item--support">
+      <div class="layout-itemContent">
+        <a
+          href="/contact"
+          class="btn btn3 u-cover layout-itemContent type-itemDescription"
+          data-astro-prefetch>contact us</a
+        >
+      </div>
     </li>
-    <li class="item support">
-      <a href="/privacy-policy" class="btn btn4" data-astro-prefetch
-        >privacy policy</a
+    <li class="layout-item layout-item--support">
+      <a
+        href="/privacy-policy"
+        class="btn btn4 u-cover layout-itemContent type-itemDescription"
+        data-astro-prefetch>privacy policy</a
       >
-      <div class="desc"><p class="appDesc">privacy policy</p></div>
     </li>
   </ul>
 </Layout>
 
 <style>
-  .h2 {
+  .u-cover {
+    position: absolute;
+    inset: 0;
+  }
+  .u-passThrough {
+    pointer-events: none;
+  }
+  .type-h2 {
     font-weight: 600;
     font-size: 0.9rem;
     margin: 2rem 0 0 0;
+    color: var(--font-color-primary);
   }
-  .h2:first-of-type {
+  .type-h2:first-otype-type {
     margin-top: 3rem;
   }
-  .h3 {
-    font-weight: 600;
-    font-size: 0.9rem;
+  .type-itemHeading,
+  .type-itemDescription {
     margin: 0;
-  }
-  .appDesc {
+    color: var(--font-color-primary);
     font-size: 0.9rem;
-    margin-top: 0;
   }
-  .list {
+  .type-itemHeading {
+    font-weight: 600;
+  }
+  .layout-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -69,31 +85,34 @@ import Layout from "../layouts/Layout.astro";
     gap: 1rem;
     list-style: none;
   }
-  .item {
+  .layout-item {
     border: 2px solid #222;
     position: relative;
     box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.07);
     transition: box-shadow 200ms ease-in;
   }
-  .item:hover {
+  .layout-item:hover {
     box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.1);
   }
-  .app {
+  .layout-item--app {
     width: 12rem;
     height: 12rem;
   }
-  .support {
+  .layout-item--support {
     width: 8rem;
     height: 8rem;
   }
-  .btn {
-    position: absolute;
-    inset: 0;
+  .layout-itemContent {
+    z-index: 3;
+    padding: 1rem;
+  }
+  .u-screenreaderLink {
     color: transparent;
     font-size: 0;
     white-space: nowrap;
     overflow: hidden;
-    z-index: 2;
+  }
+  .btn {
     transition: background-color 200ms ease-in;
   }
   .btn1 {
@@ -108,7 +127,6 @@ import Layout from "../layouts/Layout.astro";
   .btn4 {
     background-color: #fe899e;
   }
-
   .btn1:hover {
     background-color: #fffd6c;
   }
@@ -120,11 +138,5 @@ import Layout from "../layouts/Layout.astro";
   }
   .btn4:hover {
     background-color: #ff6c87;
-  }
-  .desc {
-    position: absolute;
-    inset: 1rem;
-    z-index: 2;
-    pointer-events: none;
   }
 </style>
