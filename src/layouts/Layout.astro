@@ -35,11 +35,15 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <div class="page">
-      <Wavering />
-      <Header />
-      <slot />
+      <header>
+        <Wavering />
+        <Header />
+      </header>
+      <main>
+        <slot />
+      </main>
     </div>
-    <p class="copy">&copy; 2026 Wavering Light LLC</p>
+    <footer class="copy">&copy; 2026 Wavering Light LLC</footer>
   </body>
 </html>
 
