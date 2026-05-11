@@ -1,4 +1,6 @@
 ---
+import Header from "../components/Header.astro";
+import Wavering from "../components/Wavering.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -30,7 +32,9 @@ const { title, description } = Astro.props;
     <slot name="head" />
   </head>
   <body>
-    <div class="content">
+    <div class="page">
+      <Wavering />
+      <Header />
       <slot />
     </div>
     <p class="copy">&copy; 2026 Wavering Light LLC</p>
@@ -38,7 +42,7 @@ const { title, description } = Astro.props;
 </html>
 
 <style>
-  .content {
+  .page {
     max-width: 34rem;
     padding: 1.5rem;
     border: 2px solid rgba(39, 39, 39, 0.92);
@@ -49,7 +53,7 @@ const { title, description } = Astro.props;
     position: relative;
   }
   @media screen and (min-width: 768px) {
-    .content {
+    .page {
       padding: 3rem;
     }
   }

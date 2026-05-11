@@ -1,16 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Wavering from "../components/Wavering.astro";
-import Header from "../components/Header.astro";
 ---
 
 <Layout title="Wavering Light" description="Software Development & iOS apps.">
-  <Wavering />
-  <Header />
   <h2 class="h2">Apps</h2>
   <ul class="list appList">
     <li class="item app">
-      <a href="/apps/nod-sleep-noise-app" class="btn btn1"
+      <a href="/apps/nod-sleep-noise-app" class="btn btn1" data-astro-prefetch
         >nod sleep noise app</a
       >
       <div class="desc">
@@ -34,11 +30,13 @@ import Header from "../components/Header.astro";
   <h2 class="h2">Support</h2>
   <ul class="list supportList">
     <li class="item support">
-      <a href="/contact" class="btn btn3">contact us</a>
+      <a href="/contact" class="btn btn3" data-astro-prefetch>contact us</a>
       <div class="desc"><p class="appDesc">contact us</p></div>
     </li>
     <li class="item support">
-      <a href="/privacy-policy" class="btn btn4">privacy policy</a>
+      <a href="/privacy-policy" class="btn btn4" data-astro-prefetch
+        >privacy policy</a
+      >
       <div class="desc"><p class="appDesc">privacy policy</p></div>
     </li>
   </ul>
