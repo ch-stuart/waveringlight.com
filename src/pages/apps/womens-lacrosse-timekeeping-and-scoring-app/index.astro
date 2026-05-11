@@ -1,7 +1,9 @@
 ---
 import { Picture, getImage } from "astro:assets";
-import iconSrc from "../../../images/nod/app-icon/original.png";
-import GridPlayer from "../../../components/nod/GridPlayer.astro";
+import iconSrc from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/app-icon/original.png";
+import IPhoneFrame from "../../../components/IPhoneFrame.astro";
+import { Image } from "astro:assets";
+import screenshot from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/original.png";
 
 const iconAvif = await getImage({
   src: iconSrc,
@@ -30,9 +32,9 @@ const iconPng = await getImage({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Nod — sleep noise, nothing else. A minimal sleep noise app for iPhone."
+      content="Women’s Lax time, score, and stat tracking app for iPhone."
     />
-    <title>Nod — Sleep Noise app for iOS</title>
+    <title>Women&rsquo;s Lax ScoreTable — Track Every Play</title>
     <link rel="icon" type="image/avif" href={iconAvif.src} />
     <link rel="icon" type="image/webp" href={iconWebp.src} />
     <link rel="icon" type="image/png" href={iconPng.src} />
@@ -46,10 +48,10 @@ const iconPng = await getImage({
     <style is:global>
       /* base.css */
       :root {
-        --color-bg: #0a0a0a;
-        --color-text: #f0eeeb;
-        --color-muted: #888;
-        --color-focus: #f0eeeb;
+        --color-bg: #ffffff;
+        --color-text: #252524;
+        --color-muted: #5c5a55;
+        --color-focus: #2f2d2b;
         --width-content: 640px;
         --font-sans:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
@@ -71,14 +73,6 @@ const iconPng = await getImage({
 
       html {
         background-color: var(--color-bg);
-        background-image: linear-gradient(
-          to bottom,
-          color-mix(in srgb, #8cabc2 20%, var(--color-bg)),
-          color-mix(in srgb, #ab85ad 19%, var(--color-bg)),
-          color-mix(in srgb, #c57564 16%, var(--color-bg)),
-          color-mix(in srgb, #4d362e 22%, var(--color-bg))
-        );
-        background-attachment: fixed;
         color: var(--color-text);
         font-family: var(--font-sans);
         font-size: 16px;
@@ -183,6 +177,11 @@ const iconPng = await getImage({
         font-weight: 400;
       }
 
+      .screenshot {
+        width: 100%;
+        height: auto;
+      }
+
       /* footer.css */
       .siteFooter {
         width: 100%;
@@ -212,23 +211,26 @@ const iconPng = await getImage({
           alt=""
           width={32}
           height={32}
+          densities={[1, 2, 3]}
           class="appIcon"
         />
-        <span class="wordmark">Nod</span>
+        <span class="wordmark">Women&rsquo;s Lax ScoreTable</span>
       </div>
     </header>
 
     <main id="main" class="siteMain">
       <section class="hero">
-        <h1 class="heading">Sleep noise, nothing else.</h1>
+        <h1 class="heading">Track every play.</h1>
         <p class="heroSub">
-          Nod gives you a continuous range of noise, from bright and airy to
-          warm and dark. Find the sound that helps you sleep, then let it run
-          all night.
+          Keep time, score, and stats for women&rsquo;s lacrosse. Track goals,
+          cards, draws, and 15+ player stats — or just run the clock. Built for
+          NFHS rules.
         </p>
       </section>
 
-      <GridPlayer />
+      <IPhoneFrame>
+        <Image src={screenshot} alt="App screenshot" class="screenshot" />
+      </IPhoneFrame>
     </main>
 
     <footer class="siteFooter">

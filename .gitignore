@@ -1,6 +1,5 @@
 .DS_Store
 node_modules/
-src/images/
 .astro/
 lighthouse-reports/
 .env

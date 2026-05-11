@@ -1,10 +1,14 @@
+---
+import IPhoneFrame from "../IPhoneFrame.astro";
+---
+
 <!-- srcObject is set to the WebAudio MediaStream at play time; routing output
      through an <audio> element promotes the iOS session to "playback" category,
      bypassing the ringer/mute switch. -->
 <audio id="audio-output" aria-hidden="true"></audio>
 
 <section id="player-section" class="screenshot" aria-label="Interactive noise player">
-  <div id="device-frame" class="deviceFrame">
+  <IPhoneFrame>
     <div
       id="grid-player"
       class="gridPlayer"
@@ -13,10 +17,9 @@
       aria-label="Nod noise player — tap to play, drag to explore"
       tabindex="0"
     >
-      <div id="device-notch" class="deviceNotch" aria-hidden="true"></div>
       <div id="grid-dot" class="gridDot"></div>
     </div>
-  </div>
+  </IPhoneFrame>
 </section>
 
 <section class="cta">
@@ -48,52 +51,11 @@
     justify-content: flex-start;
   }
 
-  /* Black Titanium — darkest iPhone finish */
-  .deviceFrame {
-    position: relative;
-    width: 100%;
-    max-width: 280px;
-    background: linear-gradient(150deg, #2e2e2e 0%, #1a1a1a 45%, #111 100%);
-    border-radius: 36px;
-    padding: 5px;
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.6),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 22px 56px rgba(0, 0, 0, 0.6);
-  }
-
-  /* Left side: volume up + volume down buttons */
-  .deviceFrame::before {
-    content: "";
-    position: absolute;
-    left: -3px;
-    top: 22%;
-    width: 3px;
-    height: 44px;
-    background: linear-gradient(to bottom, #2a2a2a, #1c1c1c 40%, #2a2a2a);
-    border-radius: 2px 0 0 2px;
-    box-shadow: 0 60px 0 #242424;
-  }
-
-  /* Right side: power button */
-  .deviceFrame::after {
-    content: "";
-    position: absolute;
-    right: -3px;
-    top: 22%;
-    width: 3px;
-    height: 53px;
-    background: linear-gradient(to bottom, #2a2a2a, #1c1c1c 40%, #2a2a2a);
-    border-radius: 0 2px 2px 0;
-  }
-
   /* Vertical noise-color gradient + horizontal brightness overlay, blended together */
   .gridPlayer {
     position: relative;
     width: 100%;
-    aspect-ratio: 720 / 1457;
-    border-radius: 30px;
-    overflow: hidden;
+    height: 100%;
     cursor: pointer;
     touch-action: none;
     user-select: none;
@@ -122,19 +84,6 @@
     z-index: 0;
   }
 
-  .deviceNotch {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 33%;
-    height: 24px;
-    background: #0d0d0d;
-    border-radius: 50px;
-    z-index: 2;
-    pointer-events: none;
-  }
-
   .gridDot {
     display: none;
     position: absolute;
@@ -152,12 +101,6 @@
 
   .gridDot.playing {
     background: rgba(250, 250, 250, 0.9);
-  }
-
-  @media (max-width: 480px) {
-    .deviceFrame {
-      max-width: 240px;
-    }
   }
 
   /* cta.css */

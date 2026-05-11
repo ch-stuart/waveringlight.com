@@ -1,0 +1,79 @@
+<div class="deviceFrame">
+  <div class="screen">
+    <div class="deviceNotch" aria-hidden="true"></div>
+    <slot />
+  </div>
+</div>
+
+<style>
+  /* Black Titanium — darkest iPhone finish */
+  .deviceFrame {
+    --btn-size: 3px;
+    --btn-top: 22%;
+    --btn-light: #2a2a2a;
+    --btn-dark: #1c1c1c;
+
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    background: linear-gradient(150deg, #2e2e2e 0%, #1a1a1a 45%, #111 100%);
+    border-radius: 36px;
+    padding: 5px;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.6),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 22px 56px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Left side: volume up + volume down buttons */
+  .deviceFrame::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--btn-size));
+    top: var(--btn-top);
+    width: var(--btn-size);
+    height: 44px;
+    background: linear-gradient(to bottom, var(--btn-light), var(--btn-dark) 40%, var(--btn-light));
+    border-radius: 2px 0 0 2px;
+    box-shadow: 0 60px 0 #242424;
+  }
+
+  /* Right side: power button */
+  .deviceFrame::after {
+    content: "";
+    position: absolute;
+    right: calc(-1 * var(--btn-size));
+    top: var(--btn-top);
+    width: var(--btn-size);
+    height: 53px;
+    background: linear-gradient(to bottom, var(--btn-light), var(--btn-dark) 40%, var(--btn-light));
+    border-radius: 0 2px 2px 0;
+  }
+
+  .screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 720 / 1457;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
+  .deviceNotch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 33%;
+    height: 24px;
+    background: #0d0d0d;
+    border-radius: 50px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 480px) {
+    .deviceFrame {
+      max-width: 240px;
+    }
+  }
+</style>
