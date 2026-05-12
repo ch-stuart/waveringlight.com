@@ -1,5 +1,17 @@
+---
+interface Props {
+  aspectRatio?: string;
+  screenBackground?: string;
+}
+const { aspectRatio = "1179 / 2556", screenBackground = "transparent" } =
+  Astro.props;
+---
+
 <div class="deviceFrame">
-  <div class="screen">
+  <div
+    class="screen"
+    style={`aspect-ratio: ${aspectRatio}; background-color: ${screenBackground}`}
+  >
     <div class="deviceNotch" aria-hidden="true"></div>
     <slot />
   </div>
@@ -33,7 +45,12 @@
     top: var(--btn-top);
     width: var(--btn-size);
     height: 44px;
-    background: linear-gradient(to bottom, var(--btn-light), var(--btn-dark) 40%, var(--btn-light));
+    background: linear-gradient(
+      to bottom,
+      var(--btn-light),
+      var(--btn-dark) 40%,
+      var(--btn-light)
+    );
     border-radius: 2px 0 0 2px;
     box-shadow: 0 60px 0 #242424;
   }
@@ -46,14 +63,18 @@
     top: var(--btn-top);
     width: var(--btn-size);
     height: 53px;
-    background: linear-gradient(to bottom, var(--btn-light), var(--btn-dark) 40%, var(--btn-light));
+    background: linear-gradient(
+      to bottom,
+      var(--btn-light),
+      var(--btn-dark) 40%,
+      var(--btn-light)
+    );
     border-radius: 0 2px 2px 0;
   }
 
   .screen {
     position: relative;
     width: 100%;
-    aspect-ratio: 720 / 1457;
     border-radius: 30px;
     overflow: hidden;
   }

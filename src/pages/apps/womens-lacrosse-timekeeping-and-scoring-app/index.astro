@@ -1,9 +1,14 @@
 ---
 import { Picture, getImage } from "astro:assets";
+
 import iconSrc from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/app-icon/original.png";
 import IPhoneFrame from "../../../components/IPhoneFrame.astro";
-import { Image } from "astro:assets";
-import screenshot from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/original.png";
+import ScreenshotCarousel from "../../../components/ScreenshotCarousel.astro";
+import screenshotActiveGame from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/screenshot-active-game.png";
+import screenshotEmptyGames from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/screenshot-empty-games.png";
+import screenshotReadyGame from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/screenshot-ready-game.png";
+import screenshotSettings from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/screenshot-settings.png";
+import screenshotTeams from "../../../images/womens-lacrosse-timekeeping-and-scoring-app/screenshots/screenshot-teams.png";
 
 const iconAvif = await getImage({
   src: iconSrc,
@@ -46,7 +51,6 @@ const iconPng = await getImage({
       src="https://cloud.umami.is/script.js"
       data-website-id="31fd1927-b0ad-4bc5-8de8-a5d326e02548"></script>
     <style is:global>
-      /* base.css */
       :root {
         --color-bg: #ffffff;
         --color-text: #252524;
@@ -147,7 +151,6 @@ const iconPng = await getImage({
         color: var(--color-text);
       }
 
-      /* hero.css */
       .siteMain {
         width: 100%;
         max-width: var(--width-content);
@@ -177,12 +180,6 @@ const iconPng = await getImage({
         font-weight: 400;
       }
 
-      .screenshot {
-        width: 100%;
-        height: auto;
-      }
-
-      /* footer.css */
       .siteFooter {
         width: 100%;
         max-width: var(--width-content);
@@ -228,8 +225,19 @@ const iconPng = await getImage({
         </p>
       </section>
 
-      <IPhoneFrame>
-        <Image src={screenshot} alt="App screenshot" class="screenshot" />
+      <IPhoneFrame screenBackground="rgb(243 243 243)">
+        <ScreenshotCarousel
+          images={[
+            {
+              src: screenshotActiveGame,
+              alt: "Active game with score and clock running",
+            },
+            { src: screenshotReadyGame, alt: "Game ready to start" },
+            { src: screenshotSettings, alt: "App settings" },
+            { src: screenshotTeams, alt: "Teams list" },
+            { src: screenshotEmptyGames, alt: "Empty games list" },
+          ]}
+        />
       </IPhoneFrame>
     </main>
 
