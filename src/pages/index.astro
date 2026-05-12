@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Wavering Light" description="Software Development & iOS apps.">
-  <h2 class="type-h2">Apps</h2>
+  <h2 class="type-h2">iOS Apps</h2>
   <ul class="layout-list">
     <li class="layout-item layout-item--app">
       <a
@@ -91,6 +91,16 @@ import Layout from "../layouts/Layout.astro";
     box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.07);
     transition: box-shadow 200ms ease-in;
   }
+  /* .layout-item::after {
+    content: "\2197";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    color: var(--font-color-primary);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    z-index: 5;
+  } */
   .layout-item:hover {
     box-shadow: 4px 4px 0 0 rgba(0 0 0 / 0.1);
   }
