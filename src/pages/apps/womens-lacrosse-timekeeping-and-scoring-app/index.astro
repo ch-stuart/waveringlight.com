@@ -195,6 +195,49 @@ const iconPng = await getImage({
       .footerLink:hover {
         text-decoration: underline;
       }
+
+      /* features section */
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .featuresLabel {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--color-muted);
+      }
+
+      .featuresList {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+      }
+
+      @media (min-width: 480px) {
+        .featuresList {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .featuresItem {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--color-text);
+        line-height: 1.4;
+      }
+
+      .featuresItem::before {
+        content: "✓";
+        color: var(--color-muted);
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
     </style>
   </head>
   <body>
@@ -239,6 +282,41 @@ const iconPng = await getImage({
           ]}
         />
       </IPhoneFrame>
+
+      <section class="features">
+        <p class="featuresLabel">Features</p>
+        <ul class="featuresList">
+          <li class="featuresItem">
+            Run just the clock, score, or stats - or run them all at once
+          </li>
+          <li class="featuresItem">Manage teams and rosters</li>
+          <li class="featuresItem">
+            Configurable periods, timeouts, and overtime
+          </li>
+          <li class="featuresItem">
+            Configurable mercy rule with in-game status
+          </li>
+          <li class="featuresItem">
+            Goals, assists, shots, and shot percentage
+          </li>
+          <li class="featuresItem">
+            Draw player and draw control tracking with per-player win rate
+            analytics
+          </li>
+          <li class="featuresItem">
+            Yellow and red card timers and player ejection tracking
+          </li>
+          <li class="featuresItem">
+            Automatic woman-up and woman-down goal tracking
+          </li>
+          <li class="featuresItem">
+            Goalie saves, goals allowed, and save percentage
+          </li>
+          <li class="featuresItem">
+            Full game history with complete stat tables
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer class="siteFooter">
