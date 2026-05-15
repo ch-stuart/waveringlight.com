@@ -1,0 +1,1 @@
+const e=new URLSearchParams(window.location.search);if(e.has("success")){const s=document.getElementById("thanks");s&&(s.textContent="Thank you! We will respond as soon as possible!",s.style.display="block")}

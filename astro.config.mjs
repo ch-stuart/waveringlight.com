@@ -8,6 +8,9 @@ export default defineConfig({
   prefetch: true,
   site: "https://www.waveringlight.com",
   vite: {
-    build: { emptyOutDir: false },    
+    build: {
+      emptyOutDir: false,
+      assetsInlineLimit: 0
+    },
   },
 });

@@ -56,3 +56,7 @@ docs/                              # fully generated — never edit directly
 ## Deployment
 
 Commit the `docs/` directory to `main`. GitHub Pages serves it automatically. No CI — the build runs locally.
+
+## Content Security Policy
+
+CSP is managed by Cloudflare.

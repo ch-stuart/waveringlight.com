@@ -1,0 +1,1 @@
+const a=document.getElementById("starfield"),e=["*","+","."];function n(){const t=document.createElement("span");t.className="star",t.textContent=e[Math.floor(Math.random()*e.length)],t.style.left=`${Math.random()*95}%`,t.style.top=`${Math.random()*95}%`,a.appendChild(t),t.addEventListener("animationend",()=>t.remove(),{once:!0})}n();setInterval(n,200);
