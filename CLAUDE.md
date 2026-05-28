@@ -44,6 +44,7 @@ src/
   styles/global.css
 scripts/
   lighthouse-nod.mjs               # lighthouse runner for Nod page
+  cloudflare-purge.mjs             # purges Cloudflare edge cache on deploy
 public/                            # CNAME, favicons, robots.txt, static Nod assets
 docs/                              # fully generated — never edit directly
 ```
@@ -56,6 +57,12 @@ docs/                              # fully generated — never edit directly
 ## Deployment
 
 Commit the `docs/` directory to `main`. GitHub Pages serves it automatically. No CI — the build runs locally.
+
+lefthook runs on `pre-push`: builds, stages `docs/`, then purges the Cloudflare edge cache via `scripts/cloudflare-purge.mjs`. Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ZONE_ID` in the environment.
+
+## Caching
+
+Cloudflare caches all assets at the edge for 1 year (Cache Rule). HTML responses get `Cache-Control: no-cache` via a Cache Response Transform Rule (condition: `http.response.headers["content-type"][0] contains "text/html"`), so browsers always revalidate with the edge. Hashed JS/CSS/image filenames (output by Astro) are immutable — their URLs change when content changes. The 1-year browser cache is safe for these — no purge needed. The purge script clears the entire edge cache on deploy so new HTML is served immediately.
 
 ## Content Security Policy
 

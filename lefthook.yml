@@ -5,3 +5,8 @@ pre-commit:
       run: bun run build
     gitAdd:
       run: git add docs/
+
+pre-push:
+  commands:
+    purge:
+      run: bun run purge

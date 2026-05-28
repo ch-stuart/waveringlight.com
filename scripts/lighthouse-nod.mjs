@@ -8,7 +8,7 @@ const PROD_URL = 'https://www.waveringlight.com/apps/nod-sleep-noise-app/';
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
 const CHROME_PATH =
   process.env.CHROME_PATH ??
-  '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary';
+  '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const reportsDir = join(__dirname, '..', 'lighthouse-reports');
@@ -19,6 +19,8 @@ const chrome = await launch({
   chromePath: CHROME_PATH,
   chromeFlags: ['--headless=new'],
 });
+
+let exitCode = 1;
 
 try {
   const result = await lighthouse(PROD_URL, {
@@ -31,15 +33,15 @@ try {
   const lhr = result.lhr;
 
   const scores = {};
-  for (const cat of CATEGORIES) {
-    scores[cat] = lhr.categories[cat]?.score ?? null;
+  for (const category of CATEGORIES) {
+    scores[category] = lhr.categories[category]?.score ?? null;
   }
 
   // Map each audit id to its category
   const auditToCategory = {};
-  for (const [catId, cat] of Object.entries(lhr.categories)) {
-    for (const ref of cat.auditRefs) {
-      auditToCategory[ref.id] = catId;
+  for (const [categoryId, category] of Object.entries(lhr.categories)) {
+    for (const ref of category.auditRefs) {
+      auditToCategory[ref.id] = categoryId;
     }
   }
 
@@ -76,16 +78,30 @@ try {
 
   console.log('Lighthouse Report — ' + timestamp);
   console.log('URL: ' + PROD_URL + '\n');
-  for (const [cat, score] of Object.entries(scores)) {
-    const pct = score === null ? ' N/A' : (Math.round(score * 100) + '%').padStart(4);
+  for (const [category, score] of Object.entries(scores)) {
+    const percent = score === null ? ' N/A' : (Math.round(score * 100) + '%').padStart(4);
     const icon = score === 1 ? '✓' : score >= 0.9 ? '~' : '✗';
-    console.log(`  ${icon} ${cat.padEnd(20)} ${pct}`);
+    console.log(`  ${icon} ${category.padEnd(20)} ${percent}`);
   }
   console.log('');
   console.log(`Report saved: lighthouse-reports/${filename}`);
-  console.log(issues.length > 0 ? `Issues found: ${issues.length}` : 'No issues found.');
 
-  process.exit(Object.values(scores).every(s => s === 1) ? 0 : 1);
+  if (issues.length === 0) {
+    console.log('No issues found.');
+  } else {
+    console.log(`Issues found: ${issues.length}\n`);
+    for (const issue of issues) {
+      const percent = (Math.round(issue.score * 100) + '%').padStart(4);
+      console.log(`  [${issue.category}] ${percent} — ${issue.title}`);
+      if (issue.displayValue) console.log(`         ${issue.displayValue}`);
+      console.log(`         ${issue.description}`);
+      console.log('');
+    }
+  }
+
+  exitCode = Object.values(scores).every(score => score === 1) ? 0 : 1;
 } finally {
   await chrome.kill();
 }
+
+process.exit(exitCode);
