@@ -34,14 +34,14 @@ bun run lighthouse
 
 Reports are saved to `lighthouse-reports/` as timestamped JSON. Exit code is non-zero if any page scores below 100 in any category.
 
-Accessibility is 100 on every page. Performance is 98–100 across the site.
+Accessibility is 100 on every page. Performance is 97–100 across the site.
 
 | Page | Performance | Accessibility | Best Practices | SEO |
 |------|:-----------:|:-------------:|:--------------:|:---:|
 | `/` | 99 | 100 | 100 | 100 |
-| `/contact/` | 100 | 100 | 100 | 100 |
-| `/privacy-policy/` | 98 | 100 | 100 | 100 |
-| `/apps/nod-sleep-noise-app/` | 98 | 100 | 96 | 100 |
+| `/contact/` | 98 | 100 | 100 | 100 |
+| `/privacy-policy/` | 100 | 100 | 100 | 100 |
+| `/apps/nod-sleep-noise-app/` | 97 | 100 | 96 | 100 |
 | `/apps/womens-lacrosse-timekeeping-and-scoring-app/` | 99 | 100 | 100 | 100 |
 
 ## Also

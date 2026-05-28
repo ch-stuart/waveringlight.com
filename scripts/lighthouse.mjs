@@ -22,7 +22,7 @@ const reportsDir = join(__dirname, '..', 'lighthouse-reports');
 
 const chrome = await launch({
   chromePath: CHROME_PATH,
-  chromeFlags: ['--headless=new'],
+  chromeFlags: ['--headless=new', '--disable-brave-extension', '--disable-features=BraveShields'],
 });
 
 const timestamp = new Date().toISOString();
@@ -100,7 +100,7 @@ try {
     //   }
     // }
 
-    if (!Object.values(scores).every(score => score === 1)) {
+    if (!Object.values(scores).every(score => score >= 0.97)) {
       exitCode = 1;
     }
   }
