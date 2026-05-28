@@ -25,6 +25,7 @@ const timelineScope = images.map((_, i) => `--slide-${i + 1}`).join(", ");
             widths={[270, 540, 810]}
             sizes="(max-width: 480px) 230px, 270px"
             fetchpriority={i === 0 ? "high" : "low"}
+            loading={i === 0 ? "eager" : "lazy"}
           />
         </div>
       ))
