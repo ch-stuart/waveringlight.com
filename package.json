@@ -14,7 +14,7 @@
     "preview": "astro preview",
     "lint": "oxlint",
     "format": "oxfmt",
-    "lighthouse:nod": "bun scripts/lighthouse-nod.mjs",
+    "lighthouse": "bun scripts/lighthouse.mjs",
     "purge": "bun scripts/cloudflare-purge.mjs"
   },
   "dependencies": {
