@@ -2,6 +2,7 @@
 import { Picture, getImage } from "astro:assets";
 import iconSrc from "../../../images/nod/app-icon/original.png";
 import GridPlayer from "../../../components/nod/GridPlayer.astro";
+import AppStoreLink from "../../../components/app-store-link/AppStoreLink.astro";
 
 const iconAvif = await getImage({
   src: iconSrc,
@@ -147,7 +148,6 @@ const iconPng = await getImage({
       .wordmark {
         font-size: 1.125rem;
         font-weight: 500;
-        letter-spacing: 0.04em;
         color: var(--color-text);
       }
 
@@ -170,7 +170,6 @@ const iconPng = await getImage({
         font-size: clamp(2rem, 8vw, 3rem);
         font-weight: 500;
         line-height: 1.15;
-        letter-spacing: -0.02em;
         color: var(--color-text);
       }
 
@@ -178,6 +177,10 @@ const iconPng = await getImage({
         font-size: 1.125rem;
         color: var(--color-muted);
         font-weight: 400;
+      }
+
+      .cta {
+        margin-top: var(--space-sm);
       }
 
       .siteFooter {
@@ -225,6 +228,10 @@ const iconPng = await getImage({
       </section>
 
       <GridPlayer />
+
+      <section class="cta">
+        <AppStoreLink appId="6773461936" />
+      </section>
     </main>
 
     <footer class="siteFooter">

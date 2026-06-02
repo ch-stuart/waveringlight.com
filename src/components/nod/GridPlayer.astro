@@ -26,28 +26,6 @@ import IPhoneFrame from "../IPhoneFrame.astro";
   </IPhoneFrame>
 </section>
 
-<section class="cta">
-  <button
-    class="appStoreLink"
-    onclick="document.getElementById('coming-soon-dialog').showModal(); window.umami?.track('cta-tap')"
-  >
-    <img
-      class="appStoreBadge"
-      src="/nod/download-on-app-store/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-      alt="Download on the App Store"
-      width="165"
-      height="55"
-    />
-  </button>
-</section>
-
-<dialog id="coming-soon-dialog" class="dialog" aria-labelledby="dialog-title">
-  <p id="dialog-title" class="dialogMessage">Coming soon to the App Store :)</p>
-  <form method="dialog" class="dialogForm">
-    <button class="dialogClose" autofocus>Got it</button>
-  </form>
-</dialog>
-
 <style>
   /* player.css */
   .screenshot {
@@ -105,74 +83,6 @@ import IPhoneFrame from "../IPhoneFrame.astro";
 
   .gridDot.playing {
     background: rgba(250, 250, 250, 0.9);
-  }
-
-  /* cta.css */
-  .cta {
-    padding-block-end: var(--space-md);
-  }
-
-  .appStoreLink {
-    display: inline-block;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    line-height: 0;
-  }
-
-  .appStoreBadge {
-    display: block;
-    height: 40px;
-    width: auto;
-  }
-
-  /* dialog.css */
-  .dialog {
-    background: color-mix(in srgb, var(--color-bg) 90%, var(--color-text));
-    color: var(--color-text);
-    border: 1px solid color-mix(in srgb, var(--color-text) 20%, transparent);
-    border-radius: 12px;
-    padding: var(--space-md);
-    max-width: 320px;
-    width: calc(100% - var(--space-md));
-    font-family: var(--font-sans);
-    position: fixed;
-    inset: 0;
-    margin: auto;
-  }
-
-  .dialog::backdrop {
-    background: color-mix(in srgb, var(--color-bg) 75%, transparent);
-    backdrop-filter: blur(4px);
-  }
-
-  .dialogMessage {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-block-end: var(--space-md);
-  }
-
-  .dialogForm {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .dialogClose {
-    background: none;
-    cursor: pointer;
-    color: var(--color-text);
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    border: 1px solid color-mix(in srgb, var(--color-text) 30%, transparent);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: border-color 0.15s ease;
-  }
-
-  .dialogClose:hover {
-    border-color: color-mix(in srgb, var(--color-text) 60%, transparent);
   }
 </style>
 
